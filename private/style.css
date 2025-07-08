@@ -1,0 +1,114 @@
+/* Full-page layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+}
+
+/* Center the content vertically and horizontally */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Centered page title */
+.page-title {
+  color: orange;
+  text-align: center;
+  font-size: 32px;
+  margin: 20px 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  margin-left: 0;
+}
+
+
+
+/* Form label styling */
+label {
+  color: orange;
+  display: block;
+  margin: 15px 0 5px;
+}
+
+/* Input fields and textarea */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+}
+
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Star rating style */
+.stars {
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff; /* White stars by default */
+  user-select: none;
+  margin-top: 5px;
+  letter-spacing: 5px;
+  text-shadow: 0 0 3px #fff; /* Subtle white glow */
+}
+
+.stars span:hover,
+.stars span.hover,
+.stars span.selected {
+  color: gold;
+  text-shadow: none;
+}
+
+
+/* Submit button */
+button.submit-btn,
+.search-area button {
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 25px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Search section */
+.search-area {
+  margin-top: 40px;
+}
+
+/* Review results box */
+#results {
+  margin-top: 20px;
+  background-color: #2c2c3e;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+
+#searchheading{
+    color:orange;
+}
