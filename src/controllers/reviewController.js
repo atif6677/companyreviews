@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const addReview = async (req, res) => {
   try {
     const { companyName, pros, cons, rating } = req.body;
+    
     const newReview = await Review.create({ companyName, pros, cons, rating });
     res.status(201).json(newReview);
   } catch (err) {
