@@ -28,9 +28,15 @@ function highlightStars(rating) {
 }
 
 async function submitReview() {
-  const companyName = document.getElementById('companyName').value;
-  const pros = document.getElementById('pros').value;
-  const cons = document.getElementById('cons').value;
+  // First get the input elements
+  const companyNameInput = document.getElementById('companyName');
+  const prosInput = document.getElementById('pros');
+  const consInput = document.getElementById('cons');
+
+  // Then get their values
+  const companyName = companyNameInput.value;
+  const pros = prosInput.value;
+  const cons = consInput.value;
   const rating = parseInt(selectedRating);
 
   if (!companyName || !rating) {
@@ -49,15 +55,28 @@ async function submitReview() {
 
     const data = await res.json();
     alert('Review added successfully!');
+      companyNameInput.value = '';
+    prosInput.value = '';
+    consInput.value = '';
+    selectedRating = 0;
+    highlightStars(0);
   } catch (err) {
     alert('Error submitting review.');
     console.error(err);
   }
+
+
+
+
 }
 
 async function searchCompany() {
-  const name = document.getElementById('searchBox').value;
+  const name = document.getElementById('searchBox').value.trim();
 
+  if (!name) {
+    alert("Please enter a company name to search.");
+    return;
+  }
   try {
     const res = await fetch(`${API_URL}/search?name=${name}`);
     const data = await res.json();
