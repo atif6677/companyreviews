@@ -1,15 +1,16 @@
-const Review = require('../models/reviewModel');
-const { Op } = require('sequelize');
+const Review = require("../models/reviewModel");
+const { Op } = require("sequelize");
 
 // Add a new review
 const addReview = async (req, res) => {
   try {
     const { companyName, pros, cons, rating } = req.body;
-    
+
     const newReview = await Review.create({ companyName, pros, cons, rating });
     res.status(201).json(newReview);
+
   } catch (err) {
-    res.status(500).json({ error: 'Failed to add review' });
+    res.status(500).json({ error: "Failed to add review" });
   }
 };
 
@@ -19,22 +20,24 @@ const searchCompany = async (req, res) => {
     const { name } = req.query;
     const reviews = await Review.findAll({
       where: {
-        companyName: { [Op.like]: `%${name}%` }
-      }
+        companyName: { [Op.eq]: name },
+      },
     });
 
     if (reviews.length === 0) {
-      return res.status(404).json({ message: 'No reviews found' });
+      return res.status(404).json({ message: "No reviews found" });
     }
 
-    const avgRating = reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+    const avgRating =
+      reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
+      
     res.status(200).json({ reviews, avgRating });
   } catch (err) {
-    res.status(500).json({ error: 'Search failed' });
+    res.status(500).json({ error: "Search failed" });
   }
 };
 
-module.exports={
-addReview,
-searchCompany
-}
+module.exports = {
+  addReview,
+  searchCompany,
+};

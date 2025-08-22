@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // This is your DB instance
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database"); // This is your DB instance
 
-const Review = sequelize.define('Review', {
+const Review = sequelize.define("Review", {
   companyName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -15,4 +15,4 @@ const Review = sequelize.define('Review', {
   },
 });
 
-module.exports = Review
+module.exports = Review;
